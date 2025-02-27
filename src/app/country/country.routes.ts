@@ -1,18 +1,26 @@
 import { Routes } from '@angular/router';
+import { CountryLayoutComponent } from './layouts/CountryLayout/CountryLayout.component';
 import { ByCapitalPageComponent } from './pages/by-capital-page/by-capital-page.component';
 
 export const contryRoutes: Routes = [
   {
     path: '',
-    component: ByCapitalPageComponent,
+    component: CountryLayoutComponent,
+    children: [
+      {
+        path: 'by-capital',
+        component: ByCapitalPageComponent,
+      },
+      {
+        path: '**',
+        redirectTo: 'by-capital',
+      }
+    ]
   },
   // {
   //   path: 'country',
   // },
-  {
-    path: '**',
-    redirectTo: '',
-  }
+
 ];
 
 export default contryRoutes;
